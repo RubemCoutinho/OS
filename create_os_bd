@@ -19,6 +19,7 @@ data_nascimento DATE,
 CONSTRAINT tipo_cliente CHECK (tipo_cliente IN ('PJ', 'PF'))
 );
 drop table veiculo;
+
 create table veiculo (
 idveiculo int primary key auto_increment,
 idCliente int,
@@ -28,17 +29,27 @@ ano varchar(10),
 placa varchar(10) unique,
 constraint pk_idcliente_veiculo foreign key (idCliente) references cliente(idCliente));
 
+create table mecanico_responsável(
+idResponsavel int primary key auto_increment,
+fname varchar(15),
+lname varchar(15),
+cpf char(11) unique
+);
+
 create table pedido_os (
 idOrdem INT PRIMARY KEY auto_increment,
 idCliente INT,
+idresponsavel int,
 dataAbertura DATE NOT NULL,
 descricaoServico VARCHAR(200) NOT NULL,
-valorTotal DECIMAL(10, 2) NOT NULL);
+valorTotal DECIMAL(10, 2) NOT NULL
+constraint fk_responsavel_mecanico foreign key (idresponsavel) references mecanico_responsavel(idResponsavel));
 
 create table os (
 idItem int primary key auto_increment,
 idOrder int,
+idresponsavel int,
 descricaoOrdem varchar(100),
 valorItem decimal(10,2) not null,
 constraint fk_idOrder_referential foreign key (idOrder) references pedido_os(idOrdem)
-);
+constraint fk_responsavel_mecanico foreign key (idresponsavel) references mecanico_responsavel(idResponsavel));
