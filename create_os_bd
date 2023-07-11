@@ -1,0 +1,44 @@
+create database OS;
+use OS;
+
+-- no cenário que desenvolvi esse bd, a oficina pode prestar serviços a uma empresa/pj
+
+create table cliente (
+idCliente INT PRIMARY KEY auto_increment,
+fname VARCHAR(15),
+lname varchar(15),
+tipo_cliente VARCHAR(2) NOT NULL,
+cpf_cnpj VARCHAR(14) NOT NULL,
+endereço VARCHAR(200) NOT NULL,
+telefone VARCHAR(15) NOT NULL,
+email VARCHAR(100) NOT NULL,
+inscricao_estadual VARCHAR(20),
+razao_social VARCHAR(100),
+nome_responsavel VARCHAR(100),
+data_nascimento DATE,
+CONSTRAINT tipo_cliente CHECK (tipo_cliente IN ('PJ', 'PF'))
+);
+drop table veiculo;
+create table veiculo (
+idveiculo int primary key auto_increment,
+idCliente int,
+marca varchar(10),
+modelo varchar(10),
+ano varchar(10),
+placa varchar(10) unique,
+constraint pk_idcliente_veiculo foreign key (idCliente) references cliente(idCliente));
+
+create table pedido_os (
+idOrdem INT PRIMARY KEY auto_increment,
+idCliente INT,
+dataAbertura DATE NOT NULL,
+descricaoServico VARCHAR(200) NOT NULL,
+valorTotal DECIMAL(10, 2) NOT NULL);
+
+create table os (
+idItem int primary key auto_increment,
+idOrder int,
+descricaoOrdem varchar(100),
+valorItem decimal(10,2) not null,
+constraint fk_idOrder_referential foreign key (idOrder) references pedido_os(idOrdem)
+);
