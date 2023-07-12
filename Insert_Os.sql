@@ -30,3 +30,10 @@ VALUES (3,1, 250.00, '2023-07-15', 'Serviço aprovado. Aguardando início das at
 
 update os set valorTotal=300.00, dataAprovacao='2023-07-23', observacoes='teste' where idOs=1;
 
+-- todos os produtos em andamento ou concluído
+select concat(marca,' ',v.modelo ) as OBJETO, r.fname as MECANICO, statusOr from pedido_os join veiculo as v on pedido_os.idVeiculo=v.idVeiculo
+												 join mecanico_responsável as r on idMecanico_Responsavel=idResponsavel;
+-- retorna todos os pedidos que se tornaram uma ordem de serviço, na minha interpretação viraram um produto, ou seja, foram entregues.
+select * from pedido_os join os on idOrdem=idRorder;
+
+desc pedido_os;
