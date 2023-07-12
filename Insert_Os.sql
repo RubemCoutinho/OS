@@ -28,7 +28,7 @@ INSERT INTO os (idROrder) values (3);
 INSERT INTO os (idOs,idROrder, valorTotal, dataAprovacao, observacoes)
 VALUES (3,1, 250.00, '2023-07-15', 'Serviço aprovado. Aguardando início das atividades.');
 
-update os set valorTotal=300.00, dataAprovacao='2023-07-23', observacoes='teste' where idOs=1;
+update os set dataAprovacao='2023-07-23', observacoes='teste' where idOs=1;
 
 -- todos os produtos em andamento ou concluído
 select concat(marca,' ',v.modelo ) as OBJETO, r.fname as MECANICO, statusOr from pedido_os join veiculo as v on pedido_os.idVeiculo=v.idVeiculo
