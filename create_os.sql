@@ -45,18 +45,26 @@ create table mecanico_responsável(
 create table pedido_os (
         idOrdem INT PRIMARY KEY auto_increment,
         idVeiculo int,
-        idresponsavel int,
+        idMecanico_Responsavel int,
         dataAbertura DATE NOT NULL,
         statusOr enum('AGUARDANDO APROVAÇÃO','ORÇAMENTO APROVADO'),
         descricaoServico VARCHAR(200) NOT NULL,
         valorTotal DECIMAL(10, 2) NOT NULL,
         constraint fk_veiculo_cliente foreign key (idVeiculo) references veiculo(idveiculo),
-        constraint fk_responsavel_mecanico foreign key (idresponsavel) references mecanico_responsável(idResponsavel),
+        constraint fk_responsavel_mecanico foreign key (idMecanico_Responsavel) references mecanico_responsável(idResponsavel),
         CONSTRAINT statusOr CHECK (statusOr IN ('AGUARDANDO APROVAÇÃO', 'ORÇAMENTO APROVADO'))
 );
+drop table os;
 
 -- criando a tabela de ordem e serviço
 create table os (
         idOs int primary key auto_increment,
-        idOrder int,
-		constraint fk_idOrder_referential foreign key (idOrder) references pedido_os(idOrdem));
+        idROrder int,
+        constraint fk_idOrder_referential foreign key (idROrder) references pedido_os(idOrdem));
+
+desc os;
+
+ALTER TABLE  os    
+ADD COLUMN valorTotal DECIMAL(10, 2),
+ADD COLUMN dataAprovacao DATE,
+ADD COLUMN observacoes VARCHAR(200);
