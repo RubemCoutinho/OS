@@ -4,6 +4,7 @@ drop database os;
 
 -- no cenário que desenvolvi esse bd, a oficina pode prestar serviços a uma empresa/pj
 
+-- criando a tabela cliente
 create table cliente (
         idCliente INT PRIMARY KEY auto_increment,
         fname VARCHAR(15),
@@ -21,6 +22,7 @@ create table cliente (
 );
 drop table veiculo;
 
+-- criando a tabela veiculo
 create table veiculo (
         idveiculo int primary key auto_increment,
         idCliente int,
@@ -31,6 +33,7 @@ create table veiculo (
         constraint pk_idcliente_veiculo foreign key (idCliente) references cliente(idCliente)
 );
 
+-- criando a tabela funcionário_mecâncico
 create table mecanico_responsável(
         idResponsavel int primary key auto_increment,
         fname varchar(15),
@@ -38,6 +41,7 @@ create table mecanico_responsável(
         cpf char(11) unique
 );
 
+-- criando a tabela pedido de ordem de serviço
 create table pedido_os (
         idOrdem INT PRIMARY KEY auto_increment,
         idVeiculo int,
@@ -51,10 +55,10 @@ create table pedido_os (
         CONSTRAINT statusOr CHECK (statusOr IN ('AGUARDANDO APROVAÇÃO', 'ORÇAMENTO APROVADO'))
 );
 
+-- criando a tabela de ordem e serviço
 create table os (
-        idItem int primary key auto_increment,
+        idOs int primary key auto_increment,
         idOrder int,
-        descricaoOrdem varchar(100),
+        descricaoOrdem varchar(60),
         valorItem decimal(10,2) not null,
-        constraint fk_idOrder_referential foreign key (idOrder) references pedido_os(idOrdem)
-);
+        constraint fk_idOrder_referential foreign key (idOrder) references pedido_os(idOrdem));
