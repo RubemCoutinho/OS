@@ -65,6 +65,5 @@ create table os (
 desc os;
 
 ALTER TABLE  os    
-ADD COLUMN valorTotal DECIMAL(10, 2),
 ADD COLUMN dataAprovacao DATE,
 ADD COLUMN observacoes VARCHAR(200);
