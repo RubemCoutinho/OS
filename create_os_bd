@@ -25,12 +25,12 @@ drop table veiculo;
 -- criando a tabela veiculo
 create table veiculo (
         idveiculo int primary key auto_increment,
-        idCliente int,
+        idcliente int,
         marca varchar(10),
         modelo varchar(10),
         ano varchar(10),
         placa varchar(10) unique,
-        constraint pk_idcliente_veiculo foreign key (idCliente) references cliente(idCliente)
+        constraint pk_idcliente_veiculo foreign key (idcliente) references cliente(idCliente)
 );
 
 -- criando a tabela funcionário_mecâncico
@@ -47,7 +47,7 @@ create table pedido_os (
         idVeiculo int,
         idresponsavel int,
         dataAbertura DATE NOT NULL,
-        statusOr enum('AGUARDANDO APROVAÇÃO','ORÇAMENTO APROVADO') DEFAULT 'AGUARDANDO APROVAÇÃO',
+        statusOr enum('AGUARDANDO APROVAÇÃO','ORÇAMENTO APROVADO'),
         descricaoServico VARCHAR(200) NOT NULL,
         valorTotal DECIMAL(10, 2) NOT NULL,
         constraint fk_veiculo_cliente foreign key (idVeiculo) references veiculo(idveiculo),
@@ -59,6 +59,4 @@ create table pedido_os (
 create table os (
         idOs int primary key auto_increment,
         idOrder int,
-        descricaoOrdem varchar(60),
-        valorItem decimal(10,2) not null,
-        constraint fk_idOrder_referential foreign key (idOrder) references pedido_os(idOrdem));
+		constraint fk_idOrder_referential foreign key (idOrder) references pedido_os(idOrdem));
