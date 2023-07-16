@@ -1,5 +1,5 @@
 ![OS_PRODUTO](https://github.com/RubemCoutinho/OS/assets/132609817/5cdefd33-47c6-47c2-bbb7-ae2f2e724fa6)
 
-ESSE PROJETO FOI BASEADO NO DESAFIO DA JULIANA MASCARENHAS NO CURSO SQL SPEACILIST.
+Este projeto foi baseado no desafio proposto pela Juliana Mascarenhas no curso SQL Specialist. Atualmente, estou trabalhando no aprimoramento contínuo do projeto. Estou revisando cuidadosamente os relacionamentos entre as tabelas e explorando a oportunidade de criar um banco de dados mais abrangente, que englobe a gestão de estoque.
 
--> ATUALMENTE TENHO TOMADO DECISÕES DENTRO DESSE PROJETO, ESTOU REFINANDO AOS POUCOS. NO MOMENTO ESTOU REVENDO OS RELACIONAMENTOS ENTRE AS TABELAS E VENDO A POSSIBILIDADE DE CRIAR DE MANEIRA MAIS ABRANGENTE O BANCO, ENGOBLANDO 'ESTOQUE'.
+Nesse processo de refinamento, estou analisando os relacionamentos existentes entre as tabelas para garantir que estejam corretamente definidos. Estou verificando se as chaves primárias e estrangeiras estão configuradas adequadamente e se os relacionamentos refletem a lógica do projeto.
